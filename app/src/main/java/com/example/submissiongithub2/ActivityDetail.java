@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.submissiongithub2.databinding.ActivityDetailBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -33,13 +35,17 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
 
         binding.imgDetail.findViewById(R.id.img_detail);
         binding.nameDetail.findViewById(R.id.name_detail);
-        binding.userDetail.findViewById(R.id.user_detail);
-        binding.valueLocation.findViewById(R.id.value_location);
-        binding.valueCompany.findViewById(R.id.value_company);
-        binding.valueFollower.findViewById(R.id.value_follower);
-        binding.valueFollowing.findViewById(R.id.value_following);
-        binding.valueRepository.findViewById(R.id.value_repository);
         ImageView btnBack = findViewById(R.id.btn_back);
+
+        DataUser data = getIntent().getParcelableExtra(EXTRA_USER);
+        String photo = data.getPhotoUser();
+        String name = data.getNameUser();
+
+        Glide.with(this)
+                .load(data.getPhotoUser())
+                .apply(new RequestOptions().override(150, 150))
+                .into(binding.imgDetail);
+        binding.nameDetail.setText(name);
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this);
         ViewPager2 viewPager2 = findViewById(R.id.view_pager);

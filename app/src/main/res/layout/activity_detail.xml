@@ -55,169 +55,6 @@
                     android:fontFamily="@font/mmedium"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/user_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:gravity="center"
-                    tools:text="User Name"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/mmedium"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginTop="20dp"
-                    android:weightSum="2"
-                    android:layout_marginBottom="16dp"
-                    android:layout_gravity="center">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/img_location"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="-25dp"
-                            android:layout_marginRight="10dp"
-                            android:src="@drawable/ic_pin"/>
-                        <TextView
-                            android:id="@+id/value_location"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/white_soft"
-                            android:layout_marginTop="5dp"
-                            tools:text="location_value"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:id="@+id/img_company"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="-25dp"
-                            android:layout_marginRight="10dp"
-                            android:src="@drawable/ic_company"/>
-
-                        <TextView
-                            android:id="@+id/value_company"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/white_soft"
-                            android:layout_marginTop="5dp"
-                            tools:text="company_value"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@drawable/background_shape"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginTop="10dp"
-                    android:weightSum="3"
-                    android:layout_marginBottom="16dp"
-                    android:layout_gravity="center">
-
-                    <LinearLayout
-                        android:id="@+id/lyt_follower"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tv_follower"
-                            style="@style/TextAppearance.AppCompat.Value"
-                            android:layout_marginTop="10dp"
-                            android:text="Follower" />
-
-                        <TextView
-                            android:id="@+id/value_follower"
-                            style="@style/TextAppearance.AppCompat.Value"
-                            android:layout_below="@id/tv_follower"
-                            android:layout_marginTop="15dp"
-                            android:textStyle="bold"
-                            tools:text="100" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lyt_following"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_toRightOf="@id/lyt_follower"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tv_following"
-                            style="@style/TextAppearance.AppCompat.Value"
-                            android:layout_marginTop="10dp"
-                            android:text="Following" />
-
-                        <TextView
-                            android:id="@+id/value_following"
-                            style="@style/TextAppearance.AppCompat.Value"
-                            android:layout_below="@+id/tv_following"
-                            android:layout_marginTop="15dp"
-                            android:textStyle="bold"
-                            tools:text="100" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lyt_repository"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_toRightOf="@id/lyt_following"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tv_repository"
-                            style="@style/TextAppearance.AppCompat.Value"
-                            android:layout_marginTop="10dp"
-                            android:text="Repository" />
-
-                        <TextView
-                            android:id="@+id/value_repository"
-                            style="@style/TextAppearance.AppCompat.Value"
-                            android:layout_below="@+id/tv_repository"
-                            android:layout_marginTop="15dp"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            tools:text="100" />
-                    </LinearLayout>
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -225,18 +62,17 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lytDetail"
-                android:layout_margin="8dp"
-                android:background="@color/black_soft"
+                android:layout_below="@id/lytDetail"
+                android:layout_marginTop="50dp"
                 android:layout_centerHorizontal="true"
+                android:background="@drawable/cardview"
                 app:tabMode="fixed"
-                app:tabGravity="center"
                 app:tabIndicatorGravity="stretch"
                 app:tabIndicatorAnimationMode="elastic"
                 app:tabTextAppearance="@style/TabLayoutStyle"
                 app:tabTextColor="@color/white_soft"
                 app:tabSelectedTextColor="@color/white_soft"
-                app:tabIndicator="@drawable/background_shape"/>
+                app:tabIndicator="@drawable/cardview"/>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
