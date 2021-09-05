@@ -27,7 +27,7 @@ public class MainViewModel extends ViewModel {
     void ListSearch(String query, Context context){
         ArrayList<DataUser> dataSearch = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "https://api.github.com/search/users?q=sidiqpermana" + query;
+        String url = "https://api.github.com/search/users?q=" + query;
         client.addHeader("Authorization", "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");
         client.addHeader("User-Agent", "request");
         client.get(url, new AsyncHttpResponseHandler() {

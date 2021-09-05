@@ -18,6 +18,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     private ArrayList<DataUser> listUser = new ArrayList<>();
 
     public void setData(ArrayList<DataUser> items) {
+        if (listUser == null) return;
         listUser.clear();
         listUser.addAll(items);
         notifyDataSetChanged();

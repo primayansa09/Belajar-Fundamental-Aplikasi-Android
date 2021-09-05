@@ -13,9 +13,7 @@ import android.widget.Toast;
 
 import com.example.submissiongithub2.databinding.ActivityHomeBinding;
 import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.FadingCircle;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
-import com.github.ybq.android.spinkit.style.WanderingCubes;
 
 public class ActivityHome extends AppCompatActivity {
 

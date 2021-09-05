@@ -72,7 +72,7 @@
                 app:tabTextAppearance="@style/TabLayoutStyle"
                 app:tabTextColor="@color/white_soft"
                 app:tabSelectedTextColor="@color/white_soft"
-                app:tabIndicator="@drawable/cardview"/>
+                app:tabIndicator="@drawable/shape_tablayout"/>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
