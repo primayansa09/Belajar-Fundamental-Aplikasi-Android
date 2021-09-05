@@ -28,41 +28,36 @@
                 android:visibility="invisible"
                 app:SpinKit_Color="@color/white"/>-->
 
-            <LinearLayout
-                android:id="@+id/lytDetail"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_detail"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@color/white_soft"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/name_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img_detail"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@color/white_soft"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="20dp"/>
-                <TextView
-                    android:id="@+id/name_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    tools:text="Nama User"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/mmedium"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-
-            </LinearLayout>
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/img_detail"
+                android:gravity="center"
+                tools:text="Nama User"
+                android:textSize="18sp"
+                android:fontFamily="@font/mmedium"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/lytDetail"
+                android:layout_below="@id/name_detail"
                 android:layout_marginTop="50dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/cardview"

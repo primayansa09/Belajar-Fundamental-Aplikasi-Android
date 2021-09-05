@@ -55,6 +55,7 @@ public class ActivityHome extends AppCompatActivity {
                 //Toast.makeText(ActivityHome.this, query, Toast.LENGTH_SHORT).show();
                 showListSearch(query);
                 showProgressBar(true);
+                binding.searchUser.clearFocus();
                 return true;
             }
 

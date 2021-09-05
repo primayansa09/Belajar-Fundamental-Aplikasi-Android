@@ -12,28 +12,17 @@
     android:background="@drawable/background_shape"
     android:orientation="vertical">
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardImage"
+    <ImageView
+        android:id="@+id/avatar_user"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         android:background="@drawable/cardview"
+        tools:src="@color/black_soft"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <ImageView
-            android:id="@+id/avatar_user"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            tools:src="@color/black_soft"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-    </androidx.cardview.widget.CardView>
-
+        app:layout_constraintTop_toTopOf="parent"/>
     <TextView
         android:id="@+id/name_user"
         style="@style/TextAppearance.AppCompat.Value"
@@ -42,7 +31,7 @@
         android:layout_marginBottom="-25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/cardImage"/>
+        app:layout_constraintBottom_toBottomOf="@+id/avatar_user"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
