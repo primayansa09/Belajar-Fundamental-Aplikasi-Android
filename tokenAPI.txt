@@ -3,3 +3,9 @@ https://api.github.com/search/users?q=wanda
 
 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
 https://api.github.com/search/users?q=sidiqpermana
+
+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
+https://api.github.com/users/sidiqpermana/followers
+
+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
+https://api.github.com/users/sidiqpermana/following

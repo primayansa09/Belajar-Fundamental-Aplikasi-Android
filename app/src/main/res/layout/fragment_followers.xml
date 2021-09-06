@@ -3,13 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FollowersFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Followers"
-        android:textSize="20dp"
-        android:gravity="center"/>
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rv_followers"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       tools:listitem="@layout/item_list_tablayout"/>
+
+   <com.github.ybq.android.spinkit.SpinKitView
+       android:id="@+id/progressbar_follower"
+       style="@style/SpinKitView.Large.Circle"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:visibility="invisible"
+       app:SpinKit_Color="@color/black_soft"/>
 
 </FrameLayout>

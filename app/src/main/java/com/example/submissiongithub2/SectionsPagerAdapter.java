@@ -17,10 +17,10 @@ public class SectionsPagerAdapter extends FragmentStateAdapter {
         Fragment fragment = null;
         switch (position){
             case 0:
-            fragment = new FollowersFragment();
+            fragment = FollowersFragment.newInstance("followers");
             break;
             case 1:
-            fragment = new FollowingFragment();
+            fragment = FollowingFragment.newInstance("following");
             break;
         }
         return fragment;

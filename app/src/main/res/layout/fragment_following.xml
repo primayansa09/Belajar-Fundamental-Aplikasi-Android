@@ -3,13 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FollowingFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_following"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Following"
-        android:textSize="20dp"
-        android:gravity="center"/>
+        tools:listitem="@layout/item_list_tablayout"/>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progressBar_following"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        app:SpinKit_Color="@color/black_soft"/>
 
 </FrameLayout>

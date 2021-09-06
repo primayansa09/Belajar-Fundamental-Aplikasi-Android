@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.submissiongithub2.databinding.ActivityHomeBinding;
 import com.github.ybq.android.spinkit.sprite.Sprite;
@@ -39,7 +37,6 @@ public class ActivityHome extends AppCompatActivity {
         binding.rvUser.findViewById(R.id.rv_user);
         binding.rvUser.setHasFixedSize(true);
 
-
         showRecyclerlist();
         showDataUser();
         showProgressBar(true);
@@ -52,7 +49,6 @@ public class ActivityHome extends AppCompatActivity {
         binding.searchUser.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //Toast.makeText(ActivityHome.this, query, Toast.LENGTH_SHORT).show();
                 showListSearch(query);
                 showProgressBar(true);
                 binding.searchUser.clearFocus();
@@ -72,8 +68,8 @@ public class ActivityHome extends AppCompatActivity {
         showProgressBar(false);
     }
 
-    private void showListSearch(String quey) {
-    mainViewModel.ListSearch(quey, getApplicationContext());
+    private void showListSearch(String query) {
+    mainViewModel.ListSearch(query, getApplicationContext());
     }
 
     private void showViewModel(UserAdapter adapter) {
