@@ -143,7 +143,7 @@ public class MainViewModel extends ViewModel {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String result = new String(responseBody);
-                Log.d(FollowersFragment.TAG, "onSuccess : Berhasil...");
+                Log.d(FollowersFragment.TAG, "onSuccess : https://api.github.com/users/\" + followers + \"/followers");
                 try {
                         JSONArray jsonArray = new JSONArray(result);
 
@@ -196,7 +196,7 @@ public class MainViewModel extends ViewModel {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String result = new String(responseBody);
-
+                Log.d(FollowingFragment.TAG, "onSuccess : Berhasil...");
                 try {
                     JSONArray jsonArray = new JSONArray(result);
 
@@ -214,6 +214,7 @@ public class MainViewModel extends ViewModel {
                     }
                     listModel.postValue(listFollowing);
                 } catch (JSONException e) {
+                    Log.d(FollowingFragment.TAG, "onSuccess : Gagal");
                     e.printStackTrace();
                 }
             }
@@ -233,6 +234,66 @@ public class MainViewModel extends ViewModel {
                         break;
                     default:
                         errorMessage = statusCode + " : " + error.getMessage();
+                }
+            }
+        });
+    }
+
+    void getDetail(String detail){
+        ArrayList<DataUser> mDetail = new ArrayList<>();
+        AsyncHttpClient client = new AsyncHttpClient();
+        String url = "https://api.github.com/users/" + detail;
+        client.addHeader("Authorization", "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");
+        client.addHeader("User-Agent", "request");
+        client.get(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String result = new String(responseBody);
+                Log.d(ActivityDetail.TAG, "onSuccess : Berhasil...");
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+
+                        String photo = jsonObject.getString("avatar_url");
+                        String name = jsonObject.getString("name");
+                        String comp = jsonObject.getString("company");
+                        String loc = jsonObject.getString("location");
+                        String repos = jsonObject.getString("public_repos");
+                        String follower = jsonObject.getString("followers");
+                        String following = jsonObject.getString("following");
+
+                        DataUser data = new DataUser();
+                        data.setNameUser(name);
+                        data.setPhotoUser(photo);
+                        data.setCompany(comp);
+                        data.setLocation(loc);
+                        data.setRepository(repos);
+                        data.setFollower(follower);
+                        data.setFollowing(following);
+
+                        mDetail.add(data);
+
+                    listModel.postValue(mDetail);
+                } catch (JSONException e) {
+                    Log.d(ActivityDetail.TAG, "onSuccess : Gagal...");
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+            String errorMessage;
+            switch (statusCode){
+                case 401:
+                    errorMessage = statusCode + "Bad Request";
+                    break;
+                case 403:
+                    errorMessage = statusCode + "Forbiden";
+                    break;
+                case 404:
+                    errorMessage = statusCode + "Not Found";
+                    break;
+                default:
+                    errorMessage = statusCode + " : " + error.getMessage();
                 }
             }
         });
