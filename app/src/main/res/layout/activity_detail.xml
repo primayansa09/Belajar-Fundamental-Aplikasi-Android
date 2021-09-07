@@ -98,8 +98,6 @@
                     android:fontFamily="@font/mmedium"/>
             </LinearLayout>
 
-
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
@@ -107,7 +105,6 @@
                 android:layout_below="@id/name_detail"
                 android:layout_marginTop="50dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/cardview"
                 app:tabMode="fixed"
                 app:tabIndicatorGravity="stretch"
                 app:tabIndicatorAnimationMode="elastic"

@@ -35,7 +35,7 @@ public class FragmentListAdapter extends RecyclerView.Adapter<FragmentListAdapte
         DataUser dataFragment = listFragment.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(dataFragment.getPhotoUser())
-                .apply(new RequestOptions().override(100,100))
+                .apply(new RequestOptions().override(120,120))
                 .into(holder.imgPhoto);
 
         holder.nameUser.setText(dataFragment.getNameUser());

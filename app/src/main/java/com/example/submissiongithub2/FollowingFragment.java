@@ -48,14 +48,6 @@ public class FollowingFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-           mFollowing = getArguments().getString(ARG_FOLLOWING);
-        }
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -65,7 +57,7 @@ public class FollowingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        mFollowing = getArguments().getString(ARG_FOLLOWING);
         mainViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
 
         progressBar = view.findViewById(R.id.progressBar_following);
@@ -82,7 +74,7 @@ public class FollowingFragment extends Fragment {
     }
 
     private void showUserFollowing() {
-        mainViewModel.getFollowing("following");
+        mainViewModel.getFollowing(mFollowing);
     }
 
     private void showViewMOdel() {

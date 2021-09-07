@@ -11,16 +11,18 @@ public class SectionsPagerAdapter extends FragmentStateAdapter {
         super(activity);
     }
 
+    String username = null;
+
     @NonNull
     @Override
     public Fragment createFragment(int position) {
         Fragment fragment = null;
         switch (position){
             case 0:
-            fragment = FollowersFragment.newInstance("followers");
+            fragment = FollowersFragment.newInstance(username.toString());
             break;
             case 1:
-            fragment = FollowingFragment.newInstance("following");
+            fragment = FollowingFragment.newInstance(username.toString());
             break;
         }
         return fragment;

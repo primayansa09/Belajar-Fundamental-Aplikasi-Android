@@ -1,31 +1,18 @@
 package com.example.submissiongithub2;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-import cz.msebera.android.httpclient.Header;
 
 
 public class FollowersFragment extends Fragment {
@@ -45,20 +32,12 @@ public class FollowersFragment extends Fragment {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static FollowersFragment newInstance(String Followers) {
+    public static FollowersFragment newInstance(String followers) {
         FollowersFragment fragment = new FollowersFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_FOLLOWERS, Followers);
-        fragment.setArguments(args);
+        Bundle bundle = new Bundle();
+        bundle.putString(ARG_FOLLOWERS, followers);
+        fragment.setArguments(bundle);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mFollowers = getArguments().getString(ARG_FOLLOWERS);
-        }
     }
 
     @Override
@@ -71,6 +50,7 @@ public class FollowersFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mFollowers = getArguments().getString(ARG_FOLLOWERS);
 
         mainViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
         rvFollowers = view.findViewById(R.id.rv_followers);
@@ -94,7 +74,7 @@ public class FollowersFragment extends Fragment {
     }
 
     private void showUserFollowers() {
-        mainViewModel.getFollowers("followers");
+        mainViewModel.getFollowers(mFollowers);
     }
 
     private void showViewModel() {
@@ -105,6 +85,7 @@ public class FollowersFragment extends Fragment {
             }
         });
     }
+
 
     private void showFragmentList() {
         rvFollowers.setLayoutManager(new LinearLayoutManager(getActivity()));

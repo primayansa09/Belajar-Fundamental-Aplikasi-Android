@@ -133,17 +133,17 @@ public class MainViewModel extends ViewModel {
         });
     }
 
-    void getFollowers(String followers){
+    void getFollowers(String username){
         ArrayList<DataUser> listFollowers = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "https://api.github.com/users/" + followers + "/followers";
+        String url = "https://api.github.com/users/"+username+"/followers";
         client.addHeader("Authorization", "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");
         client.addHeader("User-Agent", "request");
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String result = new String(responseBody);
-                Log.d(FollowersFragment.TAG, "onSuccess : https://api.github.com/users/\" + followers + \"/followers");
+                Log.d(FollowersFragment.TAG, url);
                 try {
                         JSONArray jsonArray = new JSONArray(result);
 
