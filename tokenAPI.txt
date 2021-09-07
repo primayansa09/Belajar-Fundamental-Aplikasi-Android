@@ -1,5 +1,3 @@
-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
-https://api.github.com/search/users?q=wanda
 
 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
 https://api.github.com/search/users?q=sidiqpermana

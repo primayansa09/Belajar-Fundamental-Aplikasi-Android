@@ -4,20 +4,29 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
+
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ShareActionProvider;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.submissiongithub2.databinding.ActivityDetailBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.io.File;
+
 public class ActivityDetail extends AppCompatActivity implements View.OnClickListener {
 
     private ActivityDetailBinding binding;
-    private MainViewModel mainViewModel;
+    private DetailViewModel detailViewModel;
+    private ImageView btnBack, btnShare;
     public static final String EXTRA_USER = "extra_user";
     public static final String TAG = ActivityDetail.class.getSimpleName();
 
@@ -35,13 +44,14 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        mainViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
+        detailViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DetailViewModel.class);
 
         binding.imgDetail.findViewById(R.id.img_detail);
         binding.nameDetail.findViewById(R.id.name_detail);
         binding.locationDetail.findViewById(R.id.location_detail);
         binding.companyDetail.findViewById(R.id.company_detail);
-        ImageView btnBack = findViewById(R.id.btn_back);
+        btnBack = findViewById(R.id.btn_back);
+        btnShare = findViewById(R.id.btn_share);
 
         DataUser user = getIntent().getParcelableExtra(EXTRA_USER);
         String name = user.getNameUser();
@@ -66,6 +76,10 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
                 (tab, position) -> tab.setText(getResources().getString(TAB_TITLEs[position]))).attach();
 
         btnBack.setOnClickListener(this);
+        btnShare.setOnClickListener(this);
+    }
+
+    private void showPagerAdapter() {
     }
 
     @Override
@@ -73,6 +87,8 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()){
             case R.id.btn_back:
                 finish();
+                break;
+            case R.id.btn_share:
                 break;
         }
     }

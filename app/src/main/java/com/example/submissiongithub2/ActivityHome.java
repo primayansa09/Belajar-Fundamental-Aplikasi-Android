@@ -6,14 +6,17 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.submissiongithub2.databinding.ActivityHomeBinding;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
 
-public class ActivityHome extends AppCompatActivity {
+public class ActivityHome extends AppCompatActivity implements View.OnClickListener {
 
     private UserAdapter adapter;
     private MainViewModel mainViewModel;
@@ -41,6 +44,8 @@ public class ActivityHome extends AppCompatActivity {
         showDataUser();
         showProgressBar(true);
         showViewModel(adapter);
+        ImageView btnSetting = findViewById(R.id.img_setting);
+        btnSetting.setOnClickListener(this);
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         binding.searchUser.findViewById(R.id.searchUser);
@@ -94,5 +99,15 @@ public class ActivityHome extends AppCompatActivity {
             binding.progressBar.setVisibility(View.GONE);
         }
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.img_setting:
+                Intent setting = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+                startActivity(setting);
+                break;
+        }
     }
 }
