@@ -37,9 +37,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         DataUser user = listUser.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(user.getPhotoUser())
-                .apply(new RequestOptions().override(150, 150))
                 .into(holder.imgUser);
-
         holder.nameUser.setText(user.getNameUser());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

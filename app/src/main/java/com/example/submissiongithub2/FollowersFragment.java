@@ -74,7 +74,7 @@ public class FollowersFragment extends Fragment {
     }
 
     private void showUserFollowers() {
-        mainViewModel.getFollowers(mFollowers);
+        mainViewModel.setFollowers(mFollowers);
     }
 
     private void showViewModel() {

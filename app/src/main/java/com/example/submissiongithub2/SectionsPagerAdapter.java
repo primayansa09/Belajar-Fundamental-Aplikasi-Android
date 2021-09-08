@@ -11,7 +11,7 @@ public class SectionsPagerAdapter extends FragmentStateAdapter {
         super(activity);
     }
 
-    String username = null;
+    String userName = null;
 
     @NonNull
     @Override
@@ -19,10 +19,10 @@ public class SectionsPagerAdapter extends FragmentStateAdapter {
         Fragment fragment = null;
         switch (position){
             case 0:
-            fragment = FollowersFragment.newInstance(username.toString());
+            fragment = FollowersFragment.newInstance(userName.toString());
             break;
             case 1:
-            fragment = FollowingFragment.newInstance(username.toString());
+            fragment = FollowingFragment.newInstance(userName.toString());
             break;
         }
         return fragment;

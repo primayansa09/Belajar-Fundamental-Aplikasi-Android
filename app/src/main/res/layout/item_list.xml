@@ -23,6 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
         android:id="@+id/name_user"
         style="@style/TextAppearance.AppCompat.Value"
@@ -33,5 +34,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/avatar_user"/>
 
+    <TextView
+        android:id="@+id/company_user"
+        style="@style/TextAppearance.AppCompat.Value"
+        tools:text="Kotlin"
+        android:fontFamily="@font/mmedium"
+        android:layout_marginBottom="-25dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/name_user"/>
+
+    <TextView
+        android:id="@+id/location_user"
+        style="@style/TextAppearance.AppCompat.Value"
+        tools:text="Jakarta"
+        android:fontFamily="@font/mmedium"
+        android:layout_marginBottom="-25dp"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintLeft_toRightOf="@id/company_user"
+        app:layout_constraintBottom_toBottomOf="@+id/name_user"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

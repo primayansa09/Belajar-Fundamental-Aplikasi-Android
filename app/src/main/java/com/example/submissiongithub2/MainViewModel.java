@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,7 +76,7 @@ public class MainViewModel extends ViewModel {
 
     }
 
-    void getDataUser(Context context){
+    void setDataUser(Context context){
         ArrayList<DataUser> listUser = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
         String url = "https://api.github.com/search/users?q=username";
@@ -87,7 +86,7 @@ public class MainViewModel extends ViewModel {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String result = new String(responseBody);
-                Log.d(ActivityHome.TAG, "onSuccess : Berhasil...");
+                Log.d(ActivityHome.TAG, result);
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     JSONArray jsonArray = jsonObject.getJSONArray("items");
@@ -107,7 +106,7 @@ public class MainViewModel extends ViewModel {
                     listModel.postValue(listUser);
 
                 } catch (JSONException e) {
-                    Log.d(ActivityHome.TAG, "onSuccess : Gagal...");
+                    Log.d("Exception", e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -133,7 +132,7 @@ public class MainViewModel extends ViewModel {
         });
     }
 
-    void getFollowers(String username){
+    void setFollowers(String username){
         ArrayList<DataUser> listFollowers = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
         String url = "https://api.github.com/users/"+username+"/followers";
@@ -143,7 +142,7 @@ public class MainViewModel extends ViewModel {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String result = new String(responseBody);
-                Log.d(FollowersFragment.TAG, url);
+                Log.d(FollowersFragment.TAG, result);
                 try {
                         JSONArray jsonArray = new JSONArray(result);
 
@@ -161,7 +160,7 @@ public class MainViewModel extends ViewModel {
                         listModel.postValue(listFollowers);
 
                 } catch (JSONException e) {
-                    Log.d(FollowersFragment.TAG, "onSuccess : Gagal...");
+                    Log.d("Exception", e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -186,7 +185,7 @@ public class MainViewModel extends ViewModel {
         });
     }
 
-    void getFollowing(String following){
+    void setFollowing(String following){
         ArrayList<DataUser> listFollowing = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
         String url = "https://api.github.com/users/"+ following +"/following";
@@ -196,7 +195,7 @@ public class MainViewModel extends ViewModel {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String result = new String(responseBody);
-                Log.d(FollowingFragment.TAG, "onSuccess : Berhasil...");
+                Log.d(FollowingFragment.TAG, result);
                 try {
                     JSONArray jsonArray = new JSONArray(result);
 
@@ -214,7 +213,7 @@ public class MainViewModel extends ViewModel {
                     }
                     listModel.postValue(listFollowing);
                 } catch (JSONException e) {
-                    Log.d(FollowingFragment.TAG, "onSuccess : Gagal");
+                    Log.d("Exception", e.getMessage());
                     e.printStackTrace();
                 }
             }

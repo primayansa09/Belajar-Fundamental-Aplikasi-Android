@@ -16,15 +16,6 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/toolbar_DetailUser">
 
-            <!--<com.github.ybq.android.spinkit.SpinKitView
-                android:id="@+id/progressbar_detail"
-                style="@style/SpinKitView.Large.Circle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:visibility="invisible"
-                app:SpinKit_Color="@color/white"/>-->
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_detail"
                 android:layout_width="150dp"
@@ -33,7 +24,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:src="@color/black_soft" />
+                tools:src="@color/black_soft" />
 
             <TextView
                 android:id="@+id/name_detail"
@@ -59,13 +50,13 @@
 
                 <ImageView
                     android:id="@+id/img_location"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_pin"
                     android:layout_below="@id/name_detail"/>
 
                 <TextView
-                    android:id="@+id/location_detail"
+                    android:id="@+id/tv_locationl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/name_detail"
@@ -78,21 +69,21 @@
 
                 <ImageView
                     android:id="@+id/img_company"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_building"
                     android:layout_below="@id/name_detail"
-                    android:layout_toRightOf="@id/location_detail"
+                    android:layout_toRightOf="@id/tv_locationl"
                     android:layout_marginLeft="30dp"/>
 
                 <TextView
-                    android:id="@+id/company_detail"
+                    android:id="@+id/tv_company"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/name_detail"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_company"
-                    tools:text="Kotlin"
+                    tools:text="Dicoding"
                     android:textColor="@color/black_soft"
                     android:textSize="18sp"
                     android:fontFamily="@font/mmedium"/>
@@ -117,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:orientation="horizontal"
-                android:background="@color/black_soft"
+                android:background="@color/grey"
                 android:layout_below="@+id/tabs"/>
 
             <androidx.viewpager2.widget.ViewPager2

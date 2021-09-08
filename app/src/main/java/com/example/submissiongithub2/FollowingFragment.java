@@ -74,7 +74,7 @@ public class FollowingFragment extends Fragment {
     }
 
     private void showUserFollowing() {
-        mainViewModel.getFollowing(mFollowing);
+        mainViewModel.setFollowing(mFollowing);
     }
 
     private void showViewMOdel() {

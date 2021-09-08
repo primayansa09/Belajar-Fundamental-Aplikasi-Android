@@ -1,35 +1,30 @@
 package com.example.submissiongithub2;
-
 import android.util.Log;
-
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 import cz.msebera.android.httpclient.Header;
 
 public class DetailViewModel extends ViewModel {
 
     private MutableLiveData<ArrayList<DataUser>> detailModel = new MutableLiveData<>();
 
-    void getDetail(String username){
+    void setDetail(String dataDetail){
         ArrayList<DataUser> detail = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "https://api.github.com/users/" + username;
+        String url = "https://api.github.com/users/" + dataDetail;
         client.addHeader("Authorization", "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");
         client.addHeader("User-Agent", "request");
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String result = new String(responseBody);
-                Log.d(ActivityDetail.TAG, "onSucces : Berhasil...");
+                Log.d(ActivityDetail.TAG, result);
                 try {
                     JSONObject user = new JSONObject(result);
 
@@ -37,7 +32,7 @@ public class DetailViewModel extends ViewModel {
                     String mPhoto = user.getString("avatar_url");
                     String mLoc = user.getString("location");
                     String mComp = user.getString("company");
-                    String mRepos = user.getString("pulic_repos");
+                    String mRepos = user.getString("public_repos");
                     String mFollowers = user.getString("followers");
                     String mFollowing = user.getString("following");
 
@@ -55,7 +50,7 @@ public class DetailViewModel extends ViewModel {
                     detailModel.postValue(detail);
 
                 } catch (JSONException e) {
-                    Log.d(ActivityDetail.TAG, "onSuccess : Gagal...");
+                    Log.d("Exception", e.getMessage().toString());
                     e.printStackTrace();
                 }
             }
@@ -78,5 +73,9 @@ public class DetailViewModel extends ViewModel {
                 }
             }
         });
+    }
+
+    LiveData<ArrayList<DataUser>> getData(){
+        return detailModel;
     }
 }

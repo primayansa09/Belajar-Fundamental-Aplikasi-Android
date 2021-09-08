@@ -1,26 +1,16 @@
 package com.example.submissiongithub2;
-
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
-
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ShareActionProvider;
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.submissiongithub2.databinding.ActivityDetailBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import java.io.File;
 
 public class ActivityDetail extends AppCompatActivity implements View.OnClickListener {
 
@@ -44,31 +34,34 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        detailViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DetailViewModel.class);
-
         binding.imgDetail.findViewById(R.id.img_detail);
         binding.nameDetail.findViewById(R.id.name_detail);
-        binding.locationDetail.findViewById(R.id.location_detail);
-        binding.companyDetail.findViewById(R.id.company_detail);
+        binding.tvLocationl.findViewById(R.id.tv_locationl);
+        binding.tvCompany.findViewById(R.id.tv_company);
         btnBack = findViewById(R.id.btn_back);
         btnShare = findViewById(R.id.btn_share);
 
-        DataUser user = getIntent().getParcelableExtra(EXTRA_USER);
-        String name = user.getNameUser();
-        String location = user.getLocation();
-        String company = user.getCompany();
+        DataUser dataUser = getIntent().getParcelableExtra(EXTRA_USER);
+        Log.d(TAG, dataUser.toString());
+        detailViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DetailViewModel.class);
+        detailViewModel.setDetail(dataUser.getNameUser());
+        detailViewModel.getData().observe(this, it->{
+            String name = dataUser.getNameUser();
+            String location = dataUser.getLocation();
+            String company = dataUser.getCompany();
 
-        Glide.with(this)
-                .load(user.getPhotoUser())
-                .apply(new RequestOptions().override(150, 150))
-                .into(binding.imgDetail);
-        binding.nameDetail.setText(name);
-        binding.locationDetail.setText(location);
-        binding.companyDetail.setText(company);
+            Glide.with(this)
+                    .load(dataUser.getPhotoUser())
+                    .into(binding.imgDetail);
+            binding.nameDetail.setText(name);
+            binding.tvLocationl.setText(location);
+            binding.tvCompany.setText(company);
+        });
+
+
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this);
-        sectionsPagerAdapter.username = user.getNameUser();
-        Log.d("datauser", sectionsPagerAdapter.username.toString());
+        sectionsPagerAdapter.userName = dataUser.getNameUser();
         ViewPager2 viewPager2 = findViewById(R.id.view_pager);
         viewPager2.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
@@ -77,9 +70,6 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
 
         btnBack.setOnClickListener(this);
         btnShare.setOnClickListener(this);
-    }
-
-    private void showPagerAdapter() {
     }
 
     @Override

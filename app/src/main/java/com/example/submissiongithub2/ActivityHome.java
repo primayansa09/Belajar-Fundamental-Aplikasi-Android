@@ -1,5 +1,4 @@
 package com.example.submissiongithub2;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.ViewModelProvider;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.ImageView;
-
 import com.example.submissiongithub2.databinding.ActivityHomeBinding;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
@@ -69,7 +67,7 @@ public class ActivityHome extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showDataUser() {
-        mainViewModel.getDataUser(getApplicationContext());
+        mainViewModel.setDataUser(getApplicationContext());
         showProgressBar(false);
     }
 
