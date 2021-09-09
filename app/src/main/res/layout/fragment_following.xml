@@ -16,7 +16,7 @@
         android:id="@+id/progressBar_following"
         style="@style/SpinKitView.Large.Circle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:visibility="invisible"
         app:SpinKit_Color="@color/black_soft"/>

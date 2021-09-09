@@ -20,7 +20,6 @@ public class FollowersFragment extends Fragment {
     private RecyclerView rvFollowers;
     private FragmentListAdapter adapter;
     private MainViewModel mainViewModel;
-    private SpinKitView progressBar;
     private static final String ARG_FOLLOWERS = "followers";
     public static final String TAG = FollowersFragment.class.getSimpleName();
 
@@ -56,21 +55,9 @@ public class FollowersFragment extends Fragment {
         rvFollowers = view.findViewById(R.id.rv_followers);
         rvFollowers.setHasFixedSize(true);
 
-        progressBar = view.findViewById(R.id.progressbar_follower);
-        Sprite treeBounce = new ThreeBounce();
-        progressBar.setIndeterminateDrawable(treeBounce);
-
         showFragmentList();
         showUserFollowers();
         showViewModel();
-        showLoading(true);
-    }
-
-    private void showLoading(Boolean state) {
-        if (state){
-            progressBar.setVisibility(View.VISIBLE);
-        }else
-            progressBar.setVisibility(View.GONE);
     }
 
     private void showUserFollowers() {
@@ -81,7 +68,6 @@ public class FollowersFragment extends Fragment {
         mainViewModel.getData().observe(getViewLifecycleOwner(), list ->{
             if (list != null){
                 adapter.setFragment(list);
-                showLoading(false);
             }
         });
     }

@@ -5,54 +5,149 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/lyt_detail"
     android:background="@color/white_soft"
     tools:context=".ActivityDetail">
 
     <include layout="@layout/toolbar_detailuser" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar_DetailUser">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_detail"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                tools:src="@color/black_soft" />
-
-            <TextView
-                android:id="@+id/name_detail"
+            <RelativeLayout
+                android:id="@+id/lyt_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/img_detail"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/mmedium"
-                android:gravity="center"
-                android:textColor="@color/black_soft"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:text="Nama User" />
+                android:layout_below="@+id/toolbar_DetailUser"
+                android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_below="@id/name_detail"
-                android:gravity="center_horizontal">
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/progressBar_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="150dp"
+                    style="@style/SpinKitView.Large.Circle"
+                    app:SpinKit_Color="@color/black_soft"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_detail"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    tools:src="@color/black_soft" />
+
+                <LinearLayout
+                    android:id="@+id/lyt_followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/img_detail"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="40dp">
+
+                    <TextView
+                        android:id="@+id/value_followers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="99"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/mmedium"
+                        android:layout_gravity="center_horizontal" />
+
+                    <TextView
+                        android:id="@+id/tv_followers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Followers"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/mmedium"
+                        android:layout_marginTop="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_following"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/lyt_followers"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="40dp">
+
+                    <TextView
+                        android:id="@+id/value_following"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="99"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/mmedium"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+                        android:id="@+id/tv_following"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Following"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/mmedium"
+                        android:layout_marginTop="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_repository"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/lyt_following"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="40dp">
+
+                    <TextView
+                        android:id="@+id/value_repos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="99"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/mmedium"
+                        android:layout_gravity="center_horizontal" />
+
+                    <TextView
+                        android:id="@+id/tv_repos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Repository"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/mmedium"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/name_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_detail"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/mmedium"
+                    android:textColor="@color/black_soft"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="Nama User" />
 
                 <ImageView
                     android:id="@+id/img_location"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_pin"
+                    android:layout_marginLeft="16dp"
                     android:layout_below="@id/name_detail"/>
 
                 <TextView
@@ -61,61 +156,61 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/name_detail"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_toRightOf="@id/img_location"
                     tools:text="Jakarta"
                     android:fontFamily="@font/mmedium"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textColor="@color/black_soft"/>
 
                 <ImageView
                     android:id="@+id/img_company"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_building"
-                    android:layout_below="@id/name_detail"
-                    android:layout_toRightOf="@id/tv_locationl"
-                    android:layout_marginLeft="30dp"/>
+                    android:layout_below="@id/tv_locationl"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/ic_building" />
 
                 <TextView
                     android:id="@+id/tv_company"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/name_detail"
+                    android:layout_below="@id/tv_locationl"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/img_company"
                     tools:text="Dicoding"
                     android:textColor="@color/black_soft"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:fontFamily="@font/mmedium"/>
-            </LinearLayout>
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/name_detail"
-                android:layout_marginTop="50dp"
-                android:layout_centerHorizontal="true"
-                app:tabMode="fixed"
-                app:tabIndicatorGravity="stretch"
-                app:tabIndicatorAnimationMode="elastic"
-                app:tabTextAppearance="@style/TabLayoutStyle"
-                app:tabTextColor="@color/black_soft"
-                app:tabSelectedTextColor="@color/white_soft"
-                app:tabIndicator="@drawable/shape_tablayout"/>
-            <LinearLayout
-                android:id="@+id/lineTabs"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:orientation="horizontal"
-                android:background="@color/grey"
-                android:layout_below="@+id/tabs"/>
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/tv_company"
+                    android:layout_centerHorizontal="true"
+                    app:tabMode="fixed"
+                    app:tabIndicatorGravity="stretch"
+                    app:tabIndicatorAnimationMode="elastic"
+                    app:tabTextAppearance="@style/TabLayoutStyle"
+                    app:tabTextColor="@color/black_soft"
+                    app:tabSelectedTextColor="@color/white_soft"
+                    app:tabIndicator="@drawable/shape_tablayout"/>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/lineTabs"/>
+                <LinearLayout
+                    android:id="@+id/lineTabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:orientation="horizontal"
+                    android:background="@color/grey"
+                    android:layout_below="@+id/tabs"/>
 
-        </RelativeLayout>
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/lineTabs"/>
+
+            </RelativeLayout>
 </RelativeLayout>

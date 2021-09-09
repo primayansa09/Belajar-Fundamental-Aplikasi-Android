@@ -12,8 +12,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_Tablayout"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="20dp"
         tools:src="@color/black_soft"
         app:layout_constraintTop_toTopOf="parent"

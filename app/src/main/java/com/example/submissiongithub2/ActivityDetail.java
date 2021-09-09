@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.submissiongithub2.databinding.ActivityDetailBinding;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -38,17 +40,28 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         binding.nameDetail.findViewById(R.id.name_detail);
         binding.tvLocationl.findViewById(R.id.tv_locationl);
         binding.tvCompany.findViewById(R.id.tv_company);
+        binding.valueFollowers.findViewById(R.id.value_followers);
+        binding.valueFollowing.findViewById(R.id.value_following);
+        binding.valueRepos.findViewById(R.id.value_repos);
         btnBack = findViewById(R.id.btn_back);
         btnShare = findViewById(R.id.btn_share);
+        binding.progressBarDetail.findViewById(R.id.parent_matrix);
+        Sprite threeBounce = new ThreeBounce();
+        binding.progressBarDetail.setIndeterminateDrawable(threeBounce);
+
+        showLoading(true);
 
         DataUser dataUser = getIntent().getParcelableExtra(EXTRA_USER);
         Log.d(TAG, dataUser.toString());
         detailViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DetailViewModel.class);
         detailViewModel.setDetail(dataUser.getNameUser());
-        detailViewModel.getData().observe(this, it->{
-            String name = dataUser.getNameUser();
-            String location = dataUser.getLocation();
-            String company = dataUser.getCompany();
+        detailViewModel.getData().observe(this, dataDetail->{
+            String name = dataDetail.getNameUser();
+            String location = dataDetail.getLocation();
+            String company = dataDetail.getCompany();
+            String followers = dataDetail.getFollower();
+            String following = dataDetail.getFollowing();
+            String repos = dataDetail.getRepository();
 
             Glide.with(this)
                     .load(dataUser.getPhotoUser())
@@ -56,6 +69,10 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
             binding.nameDetail.setText(name);
             binding.tvLocationl.setText(location);
             binding.tvCompany.setText(company);
+            binding.valueFollowers.setText(followers);
+            binding.valueFollowing.setText(following);
+            binding.valueRepos.setText(repos);
+            showLoading(false);
         });
 
 
@@ -70,6 +87,14 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
 
         btnBack.setOnClickListener(this);
         btnShare.setOnClickListener(this);
+    }
+
+    private void showLoading(Boolean state) {
+        if (state){
+          binding.progressBarDetail.setVisibility(View.VISIBLE);
+        }else{
+            binding.progressBarDetail.setVisibility(View.GONE);
+        }
     }
 
     @Override

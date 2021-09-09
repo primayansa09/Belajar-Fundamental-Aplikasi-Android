@@ -13,13 +13,4 @@
        android:layout_height="match_parent"
        tools:listitem="@layout/item_list_tablayout"/>
 
-   <com.github.ybq.android.spinkit.SpinKitView
-       android:id="@+id/progressbar_follower"
-       style="@style/SpinKitView.Large.Circle"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_gravity="center"
-       android:visibility="invisible"
-       app:SpinKit_Color="@color/black_soft"/>
-
 </FrameLayout>
