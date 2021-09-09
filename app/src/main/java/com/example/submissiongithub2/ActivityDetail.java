@@ -25,7 +25,7 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
     public static final String TAG = ActivityDetail.class.getSimpleName();
 
     @StringRes
-    private final int[] TAB_TITLEs = new int[]{
+    private final int[] TAB_TITLES = new int[]{
             R.string.followers,
             R.string.following
     };
@@ -83,7 +83,7 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         viewPager2.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         new TabLayoutMediator(tabs, viewPager2,
-                (tab, position) -> tab.setText(getResources().getString(TAB_TITLEs[position]))).attach();
+                (tab, position) -> tab.setText(getResources().getString(TAB_TITLES[position]))).attach();
 
         btnBack.setOnClickListener(this);
         btnShare.setOnClickListener(this);
