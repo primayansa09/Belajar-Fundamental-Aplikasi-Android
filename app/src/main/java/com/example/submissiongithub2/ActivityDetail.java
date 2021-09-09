@@ -3,6 +3,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
 
 public class ActivityDetail extends AppCompatActivity implements View.OnClickListener {
 
@@ -75,8 +77,6 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
             showLoading(false);
         });
 
-
-
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this);
         sectionsPagerAdapter.userName = dataUser.getNameUser();
         ViewPager2 viewPager2 = findViewById(R.id.view_pager);
@@ -104,6 +104,15 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.btn_share:
+                Intent share = new Intent();
+                share.setAction(Intent.ACTION_SEND);
+                share.putExtra(Intent.EXTRA_TEXT, binding.nameDetail.getText().toString() +"\n" + binding.tvLocationl.getText().toString() +
+                        "\n" + binding.tvCompany.getText().toString() +"\n"+ binding.valueFollowers.getText().toString() +"\n"+ binding.valueFollowing.getText().toString() +
+                        "\n" + binding.valueRepos.getText().toString());
+                share.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(share, null);
+                startActivity(shareIntent);
                 break;
         }
     }

@@ -1,5 +1,4 @@
 package com.example.submissiongithub2;
-
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
@@ -11,14 +10,12 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 import cz.msebera.android.httpclient.Header;
 
 public class MainViewModel extends ViewModel {
 
-    private final MutableLiveData<ArrayList<DataUser>> listModel =new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<DataUser>> listModel = new MutableLiveData<>();
 
     void ListSearch(String query, Context context){
         ArrayList<DataUser> dataSearch = new ArrayList<>();
@@ -30,7 +27,7 @@ public class MainViewModel extends ViewModel {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String result = new String(responseBody);
-                Log.d(ActivityHome.TAG, "onSuccess : Berhasil...");
+                Log.d(ActivityHome.TAG, result);
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     JSONArray jsonArray = jsonObject.getJSONArray("items");
@@ -49,7 +46,7 @@ public class MainViewModel extends ViewModel {
                     listModel.postValue(dataSearch);
 
                 } catch (JSONException e) {
-                    Log.d(ActivityHome.TAG, "onSuccess : Gagal...");
+                    Log.d("Exception", e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -73,7 +70,6 @@ public class MainViewModel extends ViewModel {
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     void setDataUser(Context context){

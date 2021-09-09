@@ -36,12 +36,12 @@
 
         <ImageView
             android:id="@+id/btn_share"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
-            android:src="@drawable/ic_baseline_share" />
+            android:src="@drawable/ic_share" />
     </RelativeLayout>
 
 </RelativeLayout>

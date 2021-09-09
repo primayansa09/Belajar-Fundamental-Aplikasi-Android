@@ -1,5 +1,4 @@
 package com.example.submissiongithub2;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.github.ybq.android.spinkit.SpinKitView;
-import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.ThreeBounce;
 
 
 public class FollowersFragment extends Fragment {
@@ -71,7 +67,6 @@ public class FollowersFragment extends Fragment {
             }
         });
     }
-
 
     private void showFragmentList() {
         rvFollowers.setLayoutManager(new LinearLayoutManager(getActivity()));
