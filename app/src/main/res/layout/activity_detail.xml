@@ -8,214 +8,121 @@
     android:background="@color/white_soft"
     tools:context=".ActivityDetail">
 
-    <include layout="@layout/toolbar_detailuser" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black_soft"
+                android:minHeight="?actionBarSize"
+                android:theme="?actionBarTheme"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleTextColor="@color/white_soft"/>
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_arrow_back"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:id="@+id/tools_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_user"
+                android:textSize="18sp"
+                android:fontFamily="@font/mmedium"
+                android:textColor="@color/white_soft"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/btn_back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/btn_share"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_share"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar_DetailUser">
-        <RelativeLayout
-            android:id="@+id/lyt_detail"
+        android:layout_below="@id/appBar">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar_DetailUser"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <com.github.ybq.android.spinkit.SpinKitView
-            android:id="@+id/progressBar_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
-            style="@style/SpinKitView.Large.Circle"
-            app:SpinKit_Color="@color/black_soft"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_detail"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            tools:src="@color/black_soft" />
-
-        <LinearLayout
-            android:id="@+id/lyt_followers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/img_detail"
-            android:orientation="vertical"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="40dp">
-
-            <TextView
-                android:id="@+id/value_followers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="99"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:fontFamily="@font/mmedium"
-                android:layout_gravity="center_horizontal" />
-
-            <TextView
-                android:id="@+id/tv_followers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Followers"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:fontFamily="@font/mmedium"
-                android:layout_marginTop="8dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lyt_following"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/lyt_followers"
-            android:orientation="vertical"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="40dp">
-
-            <TextView
-                android:id="@+id/value_following"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="99"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:fontFamily="@font/mmedium"
-                android:layout_gravity="center_horizontal"/>
-
-            <TextView
-                android:id="@+id/tv_following"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Following"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:fontFamily="@font/mmedium"
-                android:layout_marginTop="8dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lyt_repository"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/lyt_following"
-            android:orientation="vertical"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="40dp">
-
-            <TextView
-                android:id="@+id/value_repos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="99"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:fontFamily="@font/mmedium"
-                android:layout_gravity="center_horizontal" />
-
-            <TextView
-                android:id="@+id/tv_repos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Repository"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:fontFamily="@font/mmedium"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/name_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_detail"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/mmedium"
-            android:textColor="@color/black_soft"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="Nama User" />
-
-        <ImageView
-            android:id="@+id/img_location"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_pin"
-            android:layout_marginLeft="16dp"
-            android:layout_below="@id/name_detail"/>
-
-        <TextView
-            android:id="@+id/tv_locationl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/name_detail"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_toRightOf="@id/img_location"
-            tools:text="Jakarta"
-            android:fontFamily="@font/mmedium"
-            android:textSize="14sp"
-            android:textColor="@color/black_soft"/>
-
-        <ImageView
-            android:id="@+id/img_company"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_below="@id/tv_locationl"
-            android:layout_marginLeft="16dp"
-            android:src="@drawable/ic_building" />
-
-        <TextView
-            android:id="@+id/tv_company"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_locationl"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/img_company"
-            tools:text="Dicoding"
-            android:textColor="@color/black_soft"
-            android:textSize="14sp"
-            android:fontFamily="@font/mmedium"/>
+        <include
+            android:id="@+id/detailContainer"
+            layout="@layout/detail_"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/tv_company"
             android:layout_centerHorizontal="true"
-            app:tabMode="fixed"
-            app:tabIndicatorGravity="stretch"
+            android:layout_marginTop="20dp"
+            app:tabIndicator="@drawable/shape_tablayout"
             app:tabIndicatorAnimationMode="elastic"
-            app:tabTextAppearance="@style/TabLayoutStyle"
-            app:tabTextColor="@color/black_soft"
+            app:tabIndicatorGravity="stretch"
+            app:tabMode="fixed"
             app:tabSelectedTextColor="@color/white_soft"
-            app:tabIndicator="@drawable/shape_tablayout"/>
+            app:tabTextAppearance="@style/TabLayoutStyle"
+            app:tabTextColor="@color/black_soft" />
 
         <LinearLayout
             android:id="@+id/lineTabs"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:orientation="horizontal"
+            android:layout_below="@+id/tabs"
             android:background="@color/grey"
-            android:layout_below="@+id/tabs"/>
+            android:orientation="horizontal"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/lineTabs"/>
+            android:layout_below="@+id/lineTabs" />
 
-        </RelativeLayout>
-    </ScrollView>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progressBar_detail"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        app:SpinKit_Color="@color/black_soft" />
+
 </RelativeLayout>

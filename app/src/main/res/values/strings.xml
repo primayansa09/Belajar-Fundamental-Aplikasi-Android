@@ -4,4 +4,7 @@
     <string name="followers">Follower</string>
     <string name="following">Following</string>
     <string name="image">Image</string>
+    <string name="repository">Repository</string>
+    <string name="detail_user">Detail User</string>
+    <string name="username">User Name</string>
 </resources>

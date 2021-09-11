@@ -27,6 +27,7 @@ public class DetailViewModel extends ViewModel {
                     JSONObject user = new JSONObject(result);
 
                     String mName = user.getString("name");
+                    String mUsername = user.getString("login");
                     String mPhoto = user.getString("avatar_url");
                     String mLoc = user.getString("location");
                     String mComp = user.getString("company");
@@ -36,6 +37,7 @@ public class DetailViewModel extends ViewModel {
 
                     DataUser dataUser = new DataUser();
                     dataUser.setNameUser(mName);
+                    dataUser.setUserName(mUsername);
                     dataUser.setPhotoUser(mPhoto);
                     dataUser.setLocation(mLoc);
                     dataUser.setCompany(mComp);

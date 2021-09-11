@@ -28,9 +28,9 @@ public class FragmentListAdapter extends RecyclerView.Adapter<FragmentListAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FragmentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FragmentViewHolder holder, int i) {
 
-        DataUser dataFragment = listFragment.get(position);
+        DataUser dataFragment = listFragment.get(i);
         Glide.with(holder.itemView.getContext())
                 .load(dataFragment.getPhotoUser())
                 .apply(new RequestOptions().override(80,80))
@@ -40,11 +40,9 @@ public class FragmentListAdapter extends RecyclerView.Adapter<FragmentListAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataUser user = new DataUser();
-                user.setPhotoUser(dataFragment.getPhotoUser());
-                user.setNameUser(dataFragment.getNameUser());
+
                 Intent intent = new Intent(holder.itemView.getContext(), ActivityDetail.class);
-                intent.putExtra(ActivityDetail.EXTRA_USER, (Parcelable) user);
+                intent.putExtra(ActivityDetail.EXTRA_USER, (Parcelable) listFragment.get(i) );
                 holder.itemView.getContext().startActivity(intent);
 
             }

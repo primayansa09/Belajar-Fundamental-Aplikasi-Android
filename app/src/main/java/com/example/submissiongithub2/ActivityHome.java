@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
-import android.widget.ImageView;
 import com.example.submissiongithub2.databinding.ActivityHomeBinding;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
@@ -29,6 +28,7 @@ public class ActivityHome extends AppCompatActivity implements View.OnClickListe
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.imgSetting.findViewById(R.id.img_setting);
         mainViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
 
         binding.progressBar.findViewById(R.id.progressBar);
@@ -42,8 +42,7 @@ public class ActivityHome extends AppCompatActivity implements View.OnClickListe
         showDataUser();
         showProgressBar(true);
         showViewModel(adapter);
-        ImageView btnSetting = findViewById(R.id.img_setting);
-        btnSetting.setOnClickListener(this);
+        binding.imgSetting.setOnClickListener(this);
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         binding.searchUser.findViewById(R.id.searchUser);

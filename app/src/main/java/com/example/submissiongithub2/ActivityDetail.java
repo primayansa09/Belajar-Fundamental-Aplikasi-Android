@@ -20,7 +20,6 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
 
     private ActivityDetailBinding binding;
     private DetailViewModel detailViewModel;
-    private ImageView btnBack, btnShare;
     public static final String EXTRA_USER = "extra_user";
     public static final String TAG = ActivityDetail.class.getSimpleName();
 
@@ -38,15 +37,18 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.imgDetail.findViewById(R.id.img_detail);
-        binding.nameDetail.findViewById(R.id.name_detail);
-        binding.tvLocationl.findViewById(R.id.tv_locationl);
-        binding.tvCompany.findViewById(R.id.tv_company);
-        binding.valueFollowers.findViewById(R.id.value_followers);
-        binding.valueFollowing.findViewById(R.id.value_following);
-        binding.valueRepos.findViewById(R.id.value_repos);
-        btnBack = findViewById(R.id.btn_back);
-        btnShare = findViewById(R.id.btn_share);
+        binding.detailContainer.imgDetail.findViewById(R.id.img_detail);
+        binding.detailContainer.nameDetail.findViewById(R.id.name_detail);
+        binding.detailContainer.username.findViewById(R.id.username);
+        binding.detailContainer.tvLocation.findViewById(R.id.tv_location);
+        binding.detailContainer.tvCompany.findViewById(R.id.tv_company);
+        binding.detailContainer.tvFollowers.findViewById(R.id.tv_followers);
+        binding.detailContainer.tvFollowing.findViewById(R.id.tv_following);
+        binding.detailContainer.tvRepository.findViewById(R.id.tv_repository);
+        binding.btnBack.findViewById(R.id.btn_back);
+        binding.btnShare.findViewById(R.id.btn_share);
+
+
         binding.progressBarDetail.findViewById(R.id.parent_matrix);
         Sprite threeBounce = new ThreeBounce();
         binding.progressBarDetail.setIndeterminateDrawable(threeBounce);
@@ -58,22 +60,24 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         detailViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DetailViewModel.class);
         detailViewModel.setDetail(dataUser.getNameUser());
         detailViewModel.getData().observe(this, dataDetail->{
-            String name = dataDetail.getNameUser();
-            String location = dataDetail.getLocation();
-            String company = dataDetail.getCompany();
-            String followers = dataDetail.getFollower();
-            String following = dataDetail.getFollowing();
-            String repos = dataDetail.getRepository();
+            String mName = dataDetail.getNameUser();
+            String mUsername = dataDetail.getUserName();
+            String mLocation = dataDetail.getLocation();
+            String mCompany = dataDetail.getCompany();
+            String mFollowers = dataDetail.getFollower();
+            String mFollowing = dataDetail.getFollowing();
+            String mRepos = dataDetail.getRepository();
 
             Glide.with(this)
                     .load(dataUser.getPhotoUser())
-                    .into(binding.imgDetail);
-            binding.nameDetail.setText(name);
-            binding.tvLocationl.setText(location);
-            binding.tvCompany.setText(company);
-            binding.valueFollowers.setText(followers);
-            binding.valueFollowing.setText(following);
-            binding.valueRepos.setText(repos);
+                    .into(binding.detailContainer.imgDetail);
+            binding.detailContainer.nameDetail.setText(mName);
+            binding.detailContainer.username.setText(mUsername);
+            binding.detailContainer.tvLocation.setText(mLocation);
+            binding.detailContainer.tvCompany.setText(mCompany);
+            binding.detailContainer.tvFollowers.setText(mFollowers);
+            binding.detailContainer.tvFollowing.setText(mFollowing);
+            binding.detailContainer.tvRepository.setText(mRepos);
             showLoading(false);
         });
 
@@ -85,8 +89,8 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         new TabLayoutMediator(tabs, viewPager2,
                 (tab, position) -> tab.setText(getResources().getString(TAB_TITLES[position]))).attach();
 
-        btnBack.setOnClickListener(this);
-        btnShare.setOnClickListener(this);
+        binding.btnBack.setOnClickListener(this);
+        binding.btnShare.setOnClickListener(this);
     }
 
     private void showLoading(Boolean state) {
@@ -106,12 +110,12 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_share:
                 Intent share = new Intent();
                 share.setAction(Intent.ACTION_SEND);
-                share.putExtra(Intent.EXTRA_TEXT, binding.nameDetail.getText().toString() +"\n" + binding.tvLocationl.getText().toString() +
-                        "\n" + binding.tvCompany.getText().toString() +"\n"+ binding.valueFollowers.getText().toString() +"\n"+ binding.valueFollowing.getText().toString() +
-                        "\n" + binding.valueRepos.getText().toString());
+                share.putExtra(Intent.EXTRA_TEXT, binding.detailContainer.nameDetail.getText().toString() +"\n" + binding.detailContainer.tvLocation.getText().toString() +
+                        "\n" + binding.detailContainer.tvCompany.getText().toString() +"\n"+ binding.detailContainer.tvFollowers.getText().toString() +"\n"+ binding.detailContainer.tvFollowing.getText().toString() +
+                        "\n" + binding.detailContainer.tvRepository.getText().toString());
                 share.setType("text/plain");
 
-                Intent shareIntent = Intent.createChooser(share, null);
+                Intent shareIntent = Intent.createChooser(share, "Share to");
                 startActivity(shareIntent);
                 break;
         }

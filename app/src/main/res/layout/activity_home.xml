@@ -9,15 +9,71 @@
     android:background="@color/background"
     tools:context=".ActivityHome">
 
-    <include layout="@layout/toolbar_home"/>
+   <com.google.android.material.appbar.AppBarLayout
+       android:id="@+id/appBar_home"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+           <androidx.appcompat.widget.Toolbar
+               android:id="@+id/toolbarHome"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="@color/black"
+               android:minHeight="?actionBarSize"
+               android:theme="?actionBarTheme"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:titleTextColor="@color/white_soft"/>
+
+               <ImageView
+                   android:id="@+id/img_github"
+                   android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/githubb"
+                   android:layout_marginLeft="20dp"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   tools:ignore="ContentDescription"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Github User"
+                   android:textSize="18sp"
+                   android:textColor="@color/white_soft"
+                   android:layout_marginLeft="20dp"
+                   android:fontFamily="@font/mmedium"
+                   app:layout_constraintStart_toEndOf="@id/img_github"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintBottom_toBottomOf="parent"/>
+
+               <ImageView
+                   android:id="@+id/img_setting"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:src="@drawable/ic_settings"
+                   android:layout_marginRight="16dp"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintBottom_toBottomOf="parent"/>
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+   </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:id="@+id/lytSearch"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_below="@+id/toolbarHome"
         android:orientation="vertical"
-        android:background="@color/black">
+        android:background="@color/black"
+        android:layout_below="@+id/appBar_home">
 
         <LinearLayout
             android:layout_width="match_parent"

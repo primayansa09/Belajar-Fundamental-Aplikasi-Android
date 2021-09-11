@@ -34,12 +34,12 @@ public class MainViewModel extends ViewModel {
 
                     for (int i = 0; i < jsonArray.length(); i++){
                     JSONObject items = jsonArray.getJSONObject(i);
-                    String name = items.getString("login");
-                    String photo = items.getString("avatar_url");
+                    String mName = items.getString("login");
+                    String mPhoto = items.getString("avatar_url");
 
                     DataUser data = new DataUser();
-                    data.setNameUser(name);
-                    data.setPhotoUser(photo);
+                    data.setNameUser(mName);
+                    data.setPhotoUser(mPhoto);
 
                     dataSearch.add(data);
                     }
@@ -124,112 +124,6 @@ public class MainViewModel extends ViewModel {
                     errorMessage = statusCode + " : " + error.getMessage();
                 }
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    void setFollowers(String username){
-        ArrayList<DataUser> listFollowers = new ArrayList<>();
-        AsyncHttpClient client = new AsyncHttpClient();
-        String url = "https://api.github.com/users/"+username+"/followers";
-        client.addHeader("Authorization", "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");
-        client.addHeader("User-Agent", "request");
-        client.get(url, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String result = new String(responseBody);
-                Log.d(FollowersFragment.TAG, result);
-                try {
-                        JSONArray jsonArray = new JSONArray(result);
-
-                        for (int i = 0; i < jsonArray.length(); i++){
-                            JSONObject object = jsonArray.getJSONObject(i);
-                            String name = object.getString("login");
-                            String avatar = object.getString("avatar_url");
-
-                            DataUser data = new DataUser();
-                            data.setNameUser(name);
-                            data.setPhotoUser(avatar);
-
-                            listFollowers.add(data);
-                        }
-                        listModel.postValue(listFollowers);
-
-                } catch (JSONException e) {
-                    Log.d("Exception", e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-            String errorMessage;
-            switch (statusCode){
-                case 401:
-                    errorMessage = statusCode + "bad Request";
-                    break;
-                case 403:
-                    errorMessage = statusCode + "Forbiden";
-                    break;
-                case 404:
-                    errorMessage = statusCode + "Not Found";
-                    break;
-                default:
-                    errorMessage = statusCode + " : " + error.getMessage();
-                }
-            }
-        });
-    }
-
-    void setFollowing(String following){
-        ArrayList<DataUser> listFollowing = new ArrayList<>();
-        AsyncHttpClient client = new AsyncHttpClient();
-        String url = "https://api.github.com/users/"+ following +"/following";
-        client.addHeader("Authorization", "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");
-        client.addHeader("User-Agent", "request");
-        client.get(url, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String result = new String(responseBody);
-                Log.d(FollowingFragment.TAG, result);
-                try {
-                    JSONArray jsonArray = new JSONArray(result);
-
-                    for (int i = 0; i < jsonArray.length(); i++){
-                        JSONObject object = jsonArray.getJSONObject(i);
-
-                        String photo = object.getString("avatar_url");
-                        String name = object.getString("login");
-
-                        DataUser data = new DataUser();
-                        data.setPhotoUser(photo);
-                        data.setNameUser(name);
-
-                        listFollowing.add(data);
-                    }
-                    listModel.postValue(listFollowing);
-                } catch (JSONException e) {
-                    Log.d("Exception", e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                String errorMessage;
-                switch (statusCode){
-                    case 401:
-                        errorMessage = statusCode + "Bad Request";
-                        break;
-                    case 403:
-                        errorMessage = statusCode + "Forbiden";
-                        break;
-                    case 404:
-                        errorMessage = statusCode + "Not Found";
-                        break;
-                    default:
-                        errorMessage = statusCode + " : " + error.getMessage();
-                }
             }
         });
     }

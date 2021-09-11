@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
@@ -32,9 +31,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UserViewHolder holder, int i) {
 
-        DataUser user = listUser.get(position);
+        DataUser user = listUser.get(i);
         Glide.with(holder.itemView.getContext())
                 .load(user.getPhotoUser())
                 .into(holder.imgUser);
@@ -43,24 +42,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataUser user1 = new DataUser();
-                user1.setPhotoUser(user.getPhotoUser());
-                user1.setNameUser(user.getNameUser());
 
                 Intent intent = new Intent(holder.itemView.getContext(), ActivityDetail.class);
-                intent.putExtra(ActivityDetail.EXTRA_USER, (Parcelable) user1);
+                intent.putExtra(ActivityDetail.EXTRA_USER, (Parcelable) listUser.get(i));
                 holder.itemView.getContext().startActivity(intent);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
         return listUser.size();
     }
-
-
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
 
