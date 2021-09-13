@@ -6,7 +6,43 @@
     android:layout_height="match_parent"
     android:background="@color/white_soft"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:minHeight="?actionBarSize">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:id="@+id/tools_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_user"
+            android:textSize="18sp"
+            android:fontFamily="@font/mmedium"
+            android:textColor="@color/white_soft"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:id="@+id/btn_share"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_share"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="end"/>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_detail"
@@ -29,7 +65,7 @@
         android:textColor="@color/black_soft"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:text="Nama User" />
+        tools:text="@string/nama_user" />
 
     <TextView
         android:id="@+id/username"
@@ -71,7 +107,7 @@
             android:fontFamily="@font/mmedium"
             android:textColor="@color/black_soft"
             android:textSize="14sp"
-            tools:text="Jakarta" />
+            tools:text="@string/tv_location" />
 
     </LinearLayout>
 
@@ -101,7 +137,7 @@
             android:fontFamily="@font/mmedium"
             android:textColor="@color/black_soft"
             android:textSize="14sp"
-            tools:text="Dicoding" />
+            tools:text="@string/tv_company" />
 
     </LinearLayout>
 
@@ -197,7 +233,7 @@
                 tools:text="99"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

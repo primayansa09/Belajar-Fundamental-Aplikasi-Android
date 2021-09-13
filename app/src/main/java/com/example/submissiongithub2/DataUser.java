@@ -7,7 +7,6 @@ public class DataUser implements Parcelable{
     private String photoUser;
     private String nameUser;
     private String userName;
-    private String idUser;
     private String location;
     private String company;
     private String repository;
@@ -18,7 +17,6 @@ public class DataUser implements Parcelable{
         photoUser = in.readString();
         nameUser = in.readString();
         userName = in.readString();
-        idUser = in.readString();
         location = in.readString();
         company = in.readString();
         repository = in.readString();
@@ -35,7 +33,6 @@ public class DataUser implements Parcelable{
         dest.writeString(photoUser);
         dest.writeString(nameUser);
         dest.writeString(userName);
-        dest.writeString(idUser);
         dest.writeString(location);
         dest.writeString(company);
         dest.writeString(repository);
@@ -82,14 +79,6 @@ public class DataUser implements Parcelable{
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
     }
 
     public String getLocation() {

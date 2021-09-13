@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.submissiongithub2.databinding.ActivityDetailBinding;
 import com.github.ybq.android.spinkit.sprite.Sprite;
@@ -45,11 +44,10 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         binding.detailContainer.tvFollowers.findViewById(R.id.tv_followers);
         binding.detailContainer.tvFollowing.findViewById(R.id.tv_following);
         binding.detailContainer.tvRepository.findViewById(R.id.tv_repository);
-        binding.btnBack.findViewById(R.id.btn_back);
-        binding.btnShare.findViewById(R.id.btn_share);
+        binding.detailContainer.btnBack.findViewById(R.id.btn_back);
+        binding.detailContainer.btnShare.findViewById(R.id.btn_share);
 
-
-        binding.progressBarDetail.findViewById(R.id.parent_matrix);
+        binding.progressBarDetail.findViewById(R.id.progressBar_detail);
         Sprite threeBounce = new ThreeBounce();
         binding.progressBarDetail.setIndeterminateDrawable(threeBounce);
 
@@ -78,6 +76,7 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
             binding.detailContainer.tvFollowers.setText(mFollowers);
             binding.detailContainer.tvFollowing.setText(mFollowing);
             binding.detailContainer.tvRepository.setText(mRepos);
+
             showLoading(false);
         });
 
@@ -89,8 +88,8 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         new TabLayoutMediator(tabs, viewPager2,
                 (tab, position) -> tab.setText(getResources().getString(TAB_TITLES[position]))).attach();
 
-        binding.btnBack.setOnClickListener(this);
-        binding.btnShare.setOnClickListener(this);
+        binding.detailContainer.btnBack.setOnClickListener(this);
+        binding.detailContainer.btnShare.setOnClickListener(this);
     }
 
     private void showLoading(Boolean state) {

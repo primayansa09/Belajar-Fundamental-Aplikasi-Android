@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FollowingFragment">
 
@@ -14,10 +15,11 @@
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progressBar_following"
-        style="@style/SpinKitView.ThreeBounce"
+        style="@style/SpinKitView.Large.ThreeBounce"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
         android:visibility="invisible"
         app:SpinKit_Color="@color/black_soft"/>
 

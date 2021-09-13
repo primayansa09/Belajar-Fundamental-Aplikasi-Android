@@ -67,7 +67,7 @@ public class DetailViewModel extends ViewModel {
                         errorMessage = statusCode + "Not Found";
                         break;
                     default:
-                        errorMessage = statusCode + " ; " + error.getMessage();
+                        errorMessage = statusCode + " : " + error.getMessage();
                 }
             }
         });
